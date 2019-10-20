@@ -1,6 +1,7 @@
 ﻿using System;
 using Data.Modelos;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Data {
     public class MyFirstAppDbContext : DbContext {

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Data.Acciones
 {
@@ -25,7 +26,7 @@ namespace Data.Acciones
 
         public List<DetalleContacto> TraerTodos()
         {
-            return null ;
+            return _contexto.DetalleContactos.ToList() ;
         }
     }
 }

@@ -1,11 +1,11 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Core;
+using Data.Interfaces;
+using Data.Modelos;
+using Microsoft.AspNetCore.Mvc;
 using Web.Data;
 using Web.Models;
-using Microsoft.AspNetCore.Mvc;
-using Data.Modelos;
-using Data.Interfaces;
-using Core;
 
 namespace Web.Controllers {
 
@@ -34,18 +34,24 @@ namespace Web.Controllers {
         [Route ("usuarios")]
         public async Task<ActionResult> GetUsuarios () {
 
-            DetalleContactoBL detalleNegocio = new DetalleContactoBL();
-            var usuario = detalleNegocio.traerTodos();
-            
+            DetalleContactoBL detalleNegocio = new DetalleContactoBL ();
+            var usuario = detalleNegocio.traerTodos ();
+
+            if (usuario != null) {
+                return Ok (usuario);
+            } else {
+                return BadRequest ();
+            }
+
             // var usuario = new UsuarioViewModel.InputModel {
-                
+
             //         Nombres = "yesid",
             //         Apellidos = "Gutierrez",
             //         Correo = "yesid.gutierrez@prueba.com",
             //         Direccion = "Kra 51"
-                
+
             // };
-            return Ok (usuario);
+
         }
     }
 }
