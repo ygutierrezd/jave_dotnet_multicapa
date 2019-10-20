@@ -5,6 +5,7 @@ using Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Data.Modelos;
 using Data.Interfaces;
+using Core;
 
 namespace Web.Controllers {
 
@@ -32,15 +33,18 @@ namespace Web.Controllers {
         [HttpGet]
         [Route ("usuarios")]
         public async Task<ActionResult> GetUsuarios () {
+
+            DetalleContactoBL detalleNegocio = new DetalleContactoBL();
+            var usuario = detalleNegocio.traerTodos();
             
-            var usuario = new UsuarioViewModel.InputModel {
+            // var usuario = new UsuarioViewModel.InputModel {
                 
-                    Nombres = "yesid",
-                    Apellidos = "Gutierrez",
-                    Correo = "yesid.gutierrez@prueba.com",
-                    Direccion = "Kra 51"
+            //         Nombres = "yesid",
+            //         Apellidos = "Gutierrez",
+            //         Correo = "yesid.gutierrez@prueba.com",
+            //         Direccion = "Kra 51"
                 
-            };
+            // };
             return Ok (usuario);
         }
     }
