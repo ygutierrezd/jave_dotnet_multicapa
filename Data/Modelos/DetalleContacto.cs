@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Data.Interfaces;
 
 namespace Data.Modelos
 {
-    public class DetalleContacto
+    public class DetalleContacto : IDetalleContacto
     {
         [Key]
         public string Identificacion { get; set; }
