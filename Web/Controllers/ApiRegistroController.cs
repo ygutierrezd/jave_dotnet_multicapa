@@ -19,12 +19,24 @@ namespace Web.Controllers {
         }
 
         [HttpPost]
+        [Route("crearUsuario")]
         public async Task<ActionResult<UsuarioViewModel>> PostUsuario (UsuarioViewModel.InputModel user) {
             if (ModelState.IsValid) {
 
-                IDetalleContacto detalleContacto = user;
+                DetalleContactoBL detalleNegocio = new DetalleContactoBL();
+                DetalleContacto detalleContacto = new DetalleContacto
+                {
+                    Identificacion = user.Identificacion,
+                    Apellidos = user.Apellidos,
+                    Nombres = user.Nombres,
+                    Correo = user.Correo,
+                    Direccion = user.Direccion
+                };
+
+                detalleNegocio.agregarDetalleContacto(detalleContacto);
 
                 return Ok ();
+
             }
 
             return BadRequest ();
