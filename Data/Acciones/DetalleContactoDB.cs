@@ -11,7 +11,8 @@ namespace Data.Acciones
     {
         private MyFirstAppDbContext _contexto;
 
-        public DetalleContactoDB() {
+        public DetalleContactoDB()
+        {
             var options = new DbContextOptionsBuilder<MyFirstAppDbContext>()
                 .UseInMemoryDatabase(databaseName: "Contactos")
                 .Options;
@@ -26,7 +27,13 @@ namespace Data.Acciones
 
         public List<DetalleContacto> TraerTodos()
         {
-            return _contexto.DetalleContactos.ToList() ;
+            return _contexto.DetalleContactos.ToList();
+        }
+
+        public DetalleContacto consultarContacto(string indentificacion)
+        {
+            return _contexto.DetalleContactos
+                .Where(x => x.Identificacion.Equals(indentificacion)).FirstOrDefault();
         }
     }
 }

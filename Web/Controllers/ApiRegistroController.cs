@@ -33,7 +33,7 @@ namespace Web.Controllers {
                     Direccion = user.Direccion
                 };
 
-                detalleNegocio.agregarDetalleContacto(detalleContacto);
+                detalleNegocio.AgregarDetalleContacto(detalleContacto);
 
                 return Ok ();
 
@@ -47,7 +47,7 @@ namespace Web.Controllers {
         public async Task<ActionResult> GetUsuarios () {
 
             DetalleContactoBL detalleNegocio = new DetalleContactoBL ();
-            var usuario = detalleNegocio.traerTodos ();
+            var usuario = detalleNegocio.ConsultarTodos ();
 
             if (usuario != null) {
                 return Ok (usuario);
